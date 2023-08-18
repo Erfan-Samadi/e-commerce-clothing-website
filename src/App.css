@@ -107,3 +107,8 @@ svg {
 .app {
   padding: 1em 2.5em;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
