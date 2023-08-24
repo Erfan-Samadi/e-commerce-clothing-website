@@ -5,4 +5,8 @@
 }
 .sing-in .title {
   margin: 0.4em 0em;
+}
+.sing-in .button {
+  display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=sign-in.css.map */
