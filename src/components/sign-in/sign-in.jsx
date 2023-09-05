@@ -2,7 +2,7 @@ import React from "react"
 import FormInput from "../form-input/form-input"
 import CustomButton from "../custom-button/custom-button"
 import { auth, provider } from "../../firebase/firebase.utils"
-import { signInWithPopup } from "firebase/auth"
+import { signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth"
 import "./style/sign-in.css"
 
 
@@ -37,6 +37,15 @@ class SignIn extends React.Component {
         
     }
 
+    handleSingIn = async () => {
+        try{
+            await createUserWithEmailAndPassword(auth, this.state.email, this.state.password)
+        }
+        catch (err) {
+            console.log(`Error! ${err}`)
+        }
+    }
+
 
     render() {
         return (
@@ -48,7 +57,7 @@ class SignIn extends React.Component {
                     <FormInput label="Email" name="email" type="email" value={this.state.email} required handleChange={this.handleChange} />
                     <FormInput label="Password" name="password" type="password" value={this.state.password} required handleChange={this.handleChange}  />
                     <div className="button"> 
-                        <CustomButton type="submit"> Sign In </CustomButton>
+                        <CustomButton type="submit" onClick={this.handleSingIn}> Sign In </CustomButton>
                         <CustomButton onClick={this.handleGoogle} isGoogleSingIn> Sign In with Google </CustomButton>
                     </div>
                 </form>
